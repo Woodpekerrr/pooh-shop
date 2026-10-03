@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products Management - Shoe Shop</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-container">
+      <div class="admin-top">
+        <h1>Products Management</h1>
+        <a href="index.html" class="admin-store-link"> กลับหน้าร้าน </a>
+      </div>
+      <nav class="admin-nav">
+        <a href="admin.html">Dashboard</a>
+        <a href="admin-orders.html">Orders</a>
+        <a href="admin-products.html" class="active"> Products </a>
+        <a href="admin-users.html">Users</a>
+      </nav>
+      <section class="admin-product-section">
+        <div class="admin-section-header">
+          <h2>เพิ่มสินค้า</h2>
+          <p>เพิ่มสินค้าใหม่เข้าสู่ร้านค้า</p>
+        </div>
+        <div class="admin-product-form">
+          <div class="admin-form-group">
+            <label for="name">ชื่อสินค้า</label>
+            <input type="text" id="name" placeholder="กรอกชื่อสินค้า" />
+          </div>
+          <div class="admin-form-group">
+            <label for="price">ราคา</label>
+            <input type="number" id="price" min="1" placeholder="กรอกราคา" />
+          </div>
+          <div class="admin-form-group">
+            <label for="productImage">รูปสินค้า</label>
+            <input type="file" id="productImage" accept="image/*" />
+          </div>
+          <div class="admin-image-preview">
+            <img id="preview" src="" alt="Product Preview" />
+          </div>
+          <p id="uploadStatus" class="admin-upload-status"></p>
+          <button type="button" id="addProductBtn" class="admin-primary-btn">เพิ่มสินค้า</button>
+        </div>
+      </section>
+      <section class="admin-product-list-section">
+        <div class="admin-section-header">
+          <h2>สินค้าทั้งหมด</h2>
+          <p>จัดการข้อมูลสินค้าที่แสดงอยู่ในร้าน</p>
+        </div>
+        <div id="productList">
+          <p class="admin-product-message">กำลังโหลดสินค้า...</p>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="js/admin-products.js"></script>
+  </body>
+</html>

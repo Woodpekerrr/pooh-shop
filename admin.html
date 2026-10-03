@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Shoe Shop</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-container">
+      <div class="admin-top">
+        <h1>Admin Dashboard</h1>
+        <a href="index.html" class="admin-store-link"> กลับหน้าร้าน </a>
+      </div>
+      <nav class="admin-nav">
+        <a href="admin.html" class="active"> Dashboard </a>
+        <a href="admin-orders.html">Orders</a>
+        <a href="admin-products.html">Products</a>
+        <a href="admin-users.html">Users</a>
+      </nav>
+      <section>
+        <h2 class="dashboard-title">Order Overview</h2>
+        <div class="dashboard-overview">
+          <div class="overview-card">
+            <div class="overview-content">
+              <p>Orders ทั้งหมด</p>
+              <h3 id="dashboardOrders">0</h3>
+              <span>คำสั่งซื้อทั้งหมด</span>
+            </div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-content">
+              <p>รอตรวจสอบ</p>
+              <h3 id="dashboardPending">0</h3>
+              <span>ต้องดำเนินการ</span>
+            </div>
+          </div>
+          <div class="overview-card sales-card">
+            <div class="overview-content">
+              <p>ยอดขายรวม</p>
+              <h3 id="dashboardSales">฿0</h3>
+              <span>ยอดที่ยืนยันการชำระแล้ว</span>
+            </div>
+          </div>
+        </div>
+        <div class="order-status-section">
+          <div class="status-header">
+            <h3>สถานะคำสั่งซื้อ</h3>
+            <p>ภาพรวมสถานะของ Orders ทั้งหมด</p>
+          </div>
+          <div class="status-grid">
+            <div class="status-item">
+              <span>ชำระแล้ว</span>
+              <strong id="dashboardPaid">0</strong>
+            </div>
+            <div class="status-item">
+              <span>กำลังเตรียม</span>
+              <strong id="dashboardPreparing">0</strong>
+            </div>
+            <div class="status-item">
+              <span>จัดส่งแล้ว</span>
+              <strong id="dashboardShipped">0</strong>
+            </div>
+            <div class="status-item">
+              <span>สำเร็จ</span>
+              <strong id="dashboardCompleted">0</strong>
+            </div>
+            <div class="status-item">
+              <span>ยกเลิก</span>
+              <strong id="dashboardCancelled">0</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="recent-orders-section">
+        <div class="recent-orders-header">
+          <h2>Recent Orders</h2>
+          <a href="admin-orders.html" class="view-orders-link"> ดู Orders ทั้งหมด → </a>
+        </div>
+        <div class="recent-orders-box">
+          <table class="recent-orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>ลูกค้า</th>
+                <th>Email</th>
+                <th>ยอดรวม</th>
+                <th>Status</th>
+                <th>วันที่</th>
+              </tr>
+            </thead>
+            <tbody id="recentOrders">
+              <tr>
+                <td colspan="6" class="dashboard-message">กำลังโหลด Orders...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="js/admin-dashboard.js"></script>
+  </body>
+</html>

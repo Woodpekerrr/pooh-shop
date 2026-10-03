@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Management - Shoe Shop</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-container">
+      <div class="admin-top">
+        <h1>Users Management</h1>
+        <a href="index.html" class="admin-store-link"> กลับหน้าร้าน </a>
+      </div>
+      <nav class="admin-nav">
+        <a href="admin.html">Dashboard</a>
+        <a href="admin-orders.html">Orders</a>
+        <a href="admin-products.html">Products</a>
+        <a href="admin-users.html" class="active"> Users </a>
+      </nav>
+      <section class="admin-users-section">
+        <div class="admin-section-header">
+          <h2>ผู้ใช้งานทั้งหมด</h2>
+          <p>ดูข้อมูลและจัดการสถานะบัญชีผู้ใช้งาน</p>
+        </div>
+        <div class="users-summary">
+          <div class="users-summary-card">
+            <span>Users ทั้งหมด</span>
+            <strong id="totalUsers">0</strong>
+          </div>
+          <div class="users-summary-card">
+            <span>Active</span>
+            <strong id="activeUsers">0</strong>
+          </div>
+          <div class="users-summary-card">
+            <span>Inactive</span>
+            <strong id="inactiveUsers">0</strong>
+          </div>
+        </div>
+        <div class="users-toolbar">
+          <input
+            type="search"
+            id="userSearch"
+            placeholder="ค้นหาชื่อ Email หรือเบอร์โทร"
+            autocomplete="off"
+          />
+        </div>
+        <div class="admin-users-table-box">
+          <table class="admin-users-table">
+            <thead>
+              <tr>
+                <th>ชื่อ-นามสกุล</th>
+                <th>Email</th>
+                <th>เบอร์โทร</th>
+                <th>วันที่สมัคร</th>
+                <th>แก้ไขล่าสุด</th>
+                <th>Orders สำเร็จ</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody">
+              <tr>
+                <td colspan="8" class="users-message">กำลังโหลด Users...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="js/admin-users.js"></script>
+  </body>
+</html>

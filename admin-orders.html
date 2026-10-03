@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders Management - Shoe Shop</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-container">
+      <div class="admin-top">
+        <h1>Orders Management</h1>
+        <a href="index.html" class="admin-store-link"> กลับหน้าร้าน </a>
+      </div>
+      <nav class="admin-nav">
+        <a href="admin.html">Dashboard</a>
+        <a href="admin-orders.html" class="active"> Orders </a>
+        <a href="admin-products.html">Products</a>
+        <a href="admin-users.html">Users</a>
+      </nav>
+      <section class="admin-orders-section">
+        <div class="admin-section-header">
+          <h2>Orders</h2>
+          <p>จัดการและตรวจสอบคำสั่งซื้อทั้งหมด</p>
+        </div>
+        <div class="admin-orders-toolbar">
+          <input
+            type="search"
+            id="orderSearch"
+            placeholder="ค้นหา Order ID, Email หรือชื่อลูกค้า"
+            autocomplete="off"
+          />
+          <select id="orderStatusFilter">
+            <option value="all">ทุกสถานะ</option>
+            <option value="pending_verification">รอตรวจสอบ</option>
+            <option value="paid">ชำระแล้ว</option>
+            <option value="preparing">กำลังเตรียม</option>
+            <option value="shipped">จัดส่งแล้ว</option>
+            <option value="completed">สำเร็จ</option>
+            <option value="cancelled">ยกเลิก</option>
+          </select>
+        </div>
+        <div class="admin-orders-table-box">
+          <table class="admin-orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Email</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td colspan="7" class="admin-orders-message">กำลังโหลด Orders...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="admin-pagination">
+          <button type="button" id="prevPageBtn">Previous</button>
+          <span id="pageInfo"> Page 1 </span>
+          <button type="button" id="nextPageBtn">Next</button>
+        </div>
+      </section>
+    </main>
+    <div id="orderModal" class="admin-modal">
+      <div class="admin-modal-content">
+        <div class="admin-modal-header">
+          <h2>Order Details</h2>
+          <button type="button" id="closeOrderModal" class="admin-modal-close">×</button>
+        </div>
+        <div id="orderModalBody" class="admin-modal-body"></div>
+      </div>
+    </div>
+    <script type="module" src="js/admin-orders.js"></script>
+  </body>
+</html>

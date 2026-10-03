@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ชำระเงิน</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="payment-container">
+      <div id="paymentSection">
+        <h1>ชำระเงิน</h1>
+        <p id="paymentError"></p>
+        <div id="paymentContent">
+          <div class="payment-summary">
+            <h2>สรุปคำสั่งซื้อ</h2>
+            <div id="paymentOrderList"></div>
+          </div>
+          <div class="payment-total">
+            ยอดที่ต้องชำระ
+            <strong>
+              <span id="paymentTotal">0</span>
+              บาท
+            </strong>
+          </div>
+          <div class="promptpay">
+            <h2>📱 PromptPay</h2>
+            <img src="images/promptpay-qr.png" alt="PromptPay QR Code" />
+            <p>สแกน QR Code และชำระเงินตามยอดด้านบน</p>
+          </div>
+          <div class="payment-note">
+            เมื่อชำระเงินเรียบร้อยแล้ว กดปุ่ม
+            <strong>"ฉันชำระเงินแล้ว"</strong>
+            ระบบจะสร้างคำสั่งซื้อและส่งไปให้ร้านค้าตรวจสอบ
+          </div>
+          <button id="paymentCompleteBtn" class="payment-btn" type="button">ฉันชำระเงินแล้ว</button>
+          <button id="backCheckoutBtn" class="back-btn" type="button">
+            ← กลับไปแก้ไขข้อมูลจัดส่ง
+          </button>
+        </div>
+      </div>
+      <div id="orderSuccess">
+        <div class="success-icon"></div>
+        <h1>สั่งซื้อสำเร็จ</h1>
+        <p>ระบบได้รับคำสั่งซื้อของคุณแล้ว</p>
+        <p>กรุณารอร้านค้าตรวจสอบการชำระเงิน</p>
+        <div class="order-id">
+          Order ID
+          <br />
+          <strong id="successOrderId"></strong>
+        </div>
+        <div class="success-info" id="successInfo"></div>
+        <button id="myOrdersBtn" class="payment-btn" type="button">ดูคำสั่งซื้อของฉัน</button>
+        <button id="backShopBtn" class="back-btn" type="button">กลับหน้าร้าน</button>
+      </div>
+    </div>
+    <script type="module" src="js/payment.js"></script>
+    <script type="module" src="js/user-status-guard.js"></script>
+  </body>
+</html>

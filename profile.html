@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ข้อมูลส่วนตัว - Shoe Shop</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h2>ร้านรองเท้า XYZ</h2>
+      <div class="header-menu">
+        <a href="index.html"> หน้าหลัก </a>
+        <a href="my-orders.html"> คำสั่งซื้อของฉัน </a>
+        <a href="cart.html"> 🛒 ตะกร้า </a>
+      </div>
+    </header>
+    <main>
+      <div class="auth-container">
+        <h2>👤 ข้อมูลส่วนตัว</h2>
+        <p>แก้ไขข้อมูลส่วนตัวของคุณ</p>
+        <label for="profileFirstName"> ชื่อ </label>
+        <input type="text" id="profileFirstName" placeholder="ชื่อ" autocomplete="given-name" />
+        <label for="profileLastName"> นามสกุล </label>
+        <input type="text" id="profileLastName" placeholder="นามสกุล" autocomplete="family-name" />
+        <label for="profilePhone"> เบอร์โทร </label>
+        <input
+          type="tel"
+          id="profilePhone"
+          placeholder="0812345678"
+          maxlength="10"
+          inputmode="numeric"
+          autocomplete="tel"
+        />
+        <label for="profileEmail"> Email </label>
+        <input type="email" id="profileEmail" disabled />
+        <button type="button" id="saveProfileBtn">บันทึกข้อมูล</button>
+        <p id="profileMessage"></p>
+      </div>
+    </main>
+    <script type="module" src="js/profile.js"></script>
+    <script type="module" src="js/user-status-guard.js"></script>
+  </body>
+</html>

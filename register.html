@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>สมัครสมาชิก</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <h2>สมัครสมาชิก</h2>
+      <input type="text" id="registerFirstName" placeholder="ชื่อ" autocomplete="given-name" />
+      <input type="text" id="registerLastName" placeholder="นามสกุล" autocomplete="family-name" />
+      <input
+        type="tel"
+        id="registerPhone"
+        placeholder="เบอร์โทร เช่น 0812345678"
+        inputmode="numeric"
+        maxlength="10"
+        autocomplete="tel"
+      />
+      <input type="email" id="registerEmail" placeholder="Email" autocomplete="email" />
+      <input
+        type="password"
+        id="registerPassword"
+        placeholder="Password"
+        autocomplete="new-password"
+      />
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        autocomplete="new-password"
+      />
+      <button id="registerBtn" type="button">สมัครสมาชิก</button>
+      <p id="message"></p>
+      <p>
+        มีบัญชีแล้ว?
+        <a href="login.html"> เข้าสู่ระบบ </a>
+      </p>
+    </div>
+    <script type="module" src="js/auth.js"></script>
+  </body>
+</html>

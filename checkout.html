@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>สรุปคำสั่งซื้อ</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="checkout-container">
+      <p id="loading">กำลังโหลดข้อมูล...</p>
+      <div id="checkoutForm" style="display: none">
+        <h1>สรุปคำสั่งซื้อ</h1>
+        <div id="orderList"></div>
+        <div class="order-total">
+          ยอดรวม:
+          <strong>
+            <span id="totalPrice">0</span>
+            บาท
+          </strong>
+        </div>
+        <section class="checkout-section">
+          <h2>ข้อมูลผู้รับ</h2>
+          <div class="profile-note">
+            ระบบนำข้อมูลจาก Profile มาใส่ให้อัตโนมัติ คุณสามารถแก้ไขข้อมูลสำหรับ Order นี้ได้
+          </div>
+          <div class="checkout-row">
+            <div class="checkout-field">
+              <label for="firstName"> ชื่อผู้รับ </label>
+              <input type="text" id="firstName" placeholder="ชื่อ" autocomplete="given-name" />
+            </div>
+            <div class="checkout-field">
+              <label for="lastName"> นามสกุล </label>
+              <input type="text" id="lastName" placeholder="นามสกุล" autocomplete="family-name" />
+            </div>
+          </div>
+          <div class="checkout-field">
+            <label for="phone"> เบอร์โทรศัพท์ </label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="0812345678"
+              maxlength="10"
+              inputmode="numeric"
+              autocomplete="tel"
+            />
+          </div>
+        </section>
+        <section class="checkout-section">
+          <h2>ที่อยู่จัดส่ง</h2>
+          <div class="checkout-field address-search-field">
+            <label for="addressSearch"> ค้นหาที่อยู่ </label>
+            <input
+              type="text"
+              id="addressSearch"
+              placeholder="ลองพิมพ์ชื่อสถานที่ เช่น สยาม"
+              autocomplete="off"
+            />
+            <div id="addressSuggestions" class="address-suggestions"></div>
+          </div>
+          <p id="addressSearchStatus" class="address-search-status"></p>
+          <div class="checkout-field">
+            <label for="addressLine"> บ้านเลขที่ / หมู่ / ซอย / ถนน </label>
+            <textarea
+              id="addressLine"
+              placeholder="เช่น 99/9 หมู่ 1 ซอย..."
+              autocomplete="street-address"
+            ></textarea>
+          </div>
+          <div class="checkout-row">
+            <div class="checkout-field">
+              <label for="subDistrict"> แขวง / ตำบล </label>
+              <input type="text" id="subDistrict" placeholder="แขวง / ตำบล" />
+            </div>
+            <div class="checkout-field">
+              <label for="district"> เขต / อำเภอ </label>
+              <input type="text" id="district" placeholder="เขต / อำเภอ" />
+            </div>
+          </div>
+          <div class="checkout-row">
+            <div class="checkout-field">
+              <label for="province"> จังหวัด </label>
+              <input type="text" id="province" placeholder="จังหวัด" />
+            </div>
+            <div class="checkout-field">
+              <label for="postalCode"> รหัสไปรษณีย์ </label>
+              <input
+                type="text"
+                id="postalCode"
+                placeholder="10100"
+                maxlength="5"
+                inputmode="numeric"
+                autocomplete="postal-code"
+              />
+            </div>
+          </div>
+        </section>
+        <p id="error"></p>
+        <button type="button" id="continuePaymentBtn" class="checkout-btn">
+          ดำเนินการชำระเงิน →
+        </button>
+      </div>
+    </div>
+    <script type="module" src="js/checkout.js"></script>
+    <script type="module" src="js/user-status-guard.js"></script>
+  </body>
+</html>

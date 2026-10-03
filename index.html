@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ร้านรองเท้า</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h2>ร้านรองเท้า XYZ</h2>
+      <div class="header-menu">
+        <a href="admin.html" id="adminLink" style="display: none"> Admin </a>
+        <div class="user-menu" id="userMenu" style="display: none">
+          <button type="button" class="user-menu-btn" id="userMenuBtn" aria-expanded="false">
+            <span id="userEmail"></span>
+            <span class="user-menu-arrow">▼</span>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <a href="profile.html" id="profileLink"> ข้อมูลส่วนตัวของฉัน </a>
+            <a href="my-orders.html" id="myOrdersLink"> คำสั่งซื้อของฉัน </a>
+            <button type="button" id="logoutBtn">ออกจากระบบ</button>
+          </div>
+        </div>
+        <a href="login.html" id="loginLink"> เข้าสู่ระบบ </a>
+        <a href="cart.html"> 🛒 ตะกร้า </a>
+      </div>
+    </header>
+    <main>
+      <div class="products" id="products"></div>
+    </main>
+    <script src="js/cart.js"></script>
+    <script type="module" src="js/products.js"></script>
+    <script type="module" src="js/user.js"></script>
+  </body>
+</html>
