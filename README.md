@@ -8,11 +8,6 @@ Shopping Cart, Checkout, Order Management และระบบ Admin
 
 https://woodpekerrr.github.io/pooh-shop/
 
-<<<<<<< HEAD
-Admin account
-username : poohshop2026@gmail.com .
-password : admin001
-
 ---
 =======
 ## 🔐 บัญชีสำหรับทดลองระบบ
