@@ -1,63 +1,76 @@
-# PoohShop - Shoe E-commerce Web Application
+# PoohShop - เว็บแอปพลิเคชัน E-Commerce ร้านรองเท้า
 
-PoohShop is a responsive e-commerce web application for an online shoe store.
+PoohShop เป็นเว็บแอปพลิเคชัน E-Commerce สำหรับร้านรองเท้าออนไลน์  
+พัฒนาขึ้นเพื่อเรียนรู้และฝึกใช้งานระบบ Authentication, Database, API Integration,
+Shopping Cart, Checkout, Order Management และระบบ Admin
 
-The project provides both customer and administrator systems, including authentication, product browsing, shopping cart, checkout, shipping address search, PromptPay payment, order tracking, product management, order management, and user account management.
-
-## Live Demo
+## 🌐 Live Demo
 
 https://woodpekerrr.github.io/pooh-shop/
 
+<<<<<<< HEAD
 Admin account
 username : poohshop2026@gmail.com .
 password : admin001
 
 ---
+=======
+## 🔐 บัญชีสำหรับทดลองระบบ
+>>>>>>> e59697d (Fix screenshot filenames)
 
-## Features
+### Admin Demo
 
-### Customer
+- Email: `poohshop2026@gmail.com`
+- Password: กรุณาติดต่อผู้พัฒนาเพื่อขอรหัสผ่าน
 
-- Register a new account
-- Login and logout
-- Forgot password
-- Edit personal profile
-- Browse products
-- Add products to cart
-- Increase or decrease product quantity
-- Remove products from cart
-- View order summary
-- Checkout with saved profile information
-- Automatically load the latest shipping address
-- Search shipping addresses using Longdo Map API
-- Automatically fill district, province, and postal code
-- Pay using PromptPay QR
-- Create an order after payment confirmation
-- View order history
-- Track order status
-- Active / Inactive account protection
-
-### Admin
-
-- Multi-admin authentication
-- Admin dashboard
-- View total orders
-- View order status summary
-- View total sales
-- View recent orders
-- Search and filter orders
-- View order details
-- Update order status
-- Add products
-- Edit products
-- Delete products
-- Upload product images using Cloudinary
-- View registered users
-- Activate or deactivate user accounts
+> บัญชีสำหรับ Demo ควรเป็นบัญชีทดสอบที่ไม่มีข้อมูลสำคัญและมีสิทธิ์เท่าที่จำเป็น
 
 ---
 
-## Tech Stack
+## ✨ Features
+
+### 👤 ระบบผู้ใช้งาน
+
+- สมัครสมาชิก
+- เข้าสู่ระบบ / ออกจากระบบ
+- ลืมรหัสผ่าน
+- แก้ไขข้อมูลส่วนตัว
+- ดูรายการสินค้า
+- เพิ่มสินค้าลงตะกร้า
+- เพิ่ม / ลดจำนวนสินค้า
+- ลบสินค้าออกจากตะกร้า
+- Checkout
+- ดึงข้อมูลผู้ใช้จาก Profile อัตโนมัติ
+- ดึงที่อยู่จัดส่งล่าสุด
+- ค้นหาที่อยู่ด้วย Longdo Map API
+- กรอกเขต จังหวัด และรหัสไปรษณีย์อัตโนมัติ
+- ชำระเงินด้วย PromptPay QR
+- สร้างคำสั่งซื้อ
+- ดูประวัติคำสั่งซื้อ
+- ติดตามสถานะคำสั่งซื้อ
+- ระบบ Active / Inactive Account
+
+### 🛠️ ระบบ Admin
+
+- รองรับ Multi Admin
+- Admin Dashboard
+- ดูจำนวนคำสั่งซื้อทั้งหมด
+- ดูยอดขายรวม
+- ดูสรุปสถานะคำสั่งซื้อ
+- ดูคำสั่งซื้อล่าสุด
+- ค้นหาและกรองคำสั่งซื้อ
+- ดูรายละเอียดคำสั่งซื้อ
+- เปลี่ยนสถานะคำสั่งซื้อ
+- เพิ่มสินค้า
+- แก้ไขสินค้า
+- ลบสินค้า
+- Upload รูปสินค้าผ่าน Cloudinary
+- ดูรายชื่อผู้ใช้งาน
+- เปิด / ปิดการใช้งานบัญชีผู้ใช้
+
+---
+
+## 🧰 Tech Stack
 
 ### Frontend
 
@@ -87,140 +100,133 @@ password : admin001
 
 ---
 
-## Application Flow
+## 🔄 Application Flow
 
 ```mermaid
 flowchart TD
-    A[Visitor enters PoohShop] --> B{Logged in?}
+    A[ผู้ใช้งานเข้าสู่ PoohShop] --> B{เข้าสู่ระบบแล้วหรือไม่}
 
-    B -- No --> C[Login / Register]
+    B -- ยัง --> C[Login / Register]
     C --> D[Firebase Authentication]
-    D --> E{Account Type}
+    D --> E{ประเภทบัญชี}
 
-    B -- Yes --> E
+    B -- แล้ว --> E
 
-    E -- Customer --> F[Home / Product List]
+    E -- User --> F[หน้ารายการสินค้า]
     E -- Admin --> N[Admin Dashboard]
 
-    F --> G[Add Product to Cart]
+    F --> G[เพิ่มสินค้าลงตะกร้า]
     G --> H[Shopping Cart]
     H --> I[Checkout]
 
-    I --> J[Load Profile Information]
-    J --> K[Search Shipping Address]
+    I --> J[โหลดข้อมูล Profile]
+    J --> K[ค้นหาที่อยู่]
     K --> L[Longdo Map API]
-    L --> M[Payment Page]
+    L --> M[Payment]
 
     M --> P[PromptPay QR]
-    P --> Q[Customer Confirms Payment]
-    Q --> R[Create Order in Firestore]
+    P --> Q[ผู้ใช้ยืนยันการชำระเงิน]
+    Q --> R[สร้าง Order ใน Firestore]
     R --> S[Order Success]
     S --> T[My Orders]
-    T --> U[Track Order Status]
+    T --> U[ติดตามสถานะ Order]
 
-    N --> V[Order Management]
-    N --> W[Product Management]
-    N --> X[User Management]
+    N --> V[จัดการ Orders]
+    N --> W[จัดการ Products]
+    N --> X[จัดการ Users]
 
-    V --> Y[View / Search Orders]
-    Y --> Z[Update Order Status]
-    Z --> R
+    V --> Y[ดู / ค้นหา Orders]
+    Y --> Z[เปลี่ยนสถานะ Order]
 
-    W --> AA[Add / Edit / Delete Products]
-    AA --> AB[Upload Images to Cloudinary]
+    W --> AA[เพิ่ม / แก้ไข / ลบสินค้า]
+    AA --> AB[Upload รูปผ่าน Cloudinary]
 
-    X --> AC[View Users]
-    AC --> AD[Active / Inactive Account]
+    X --> AC[ดูรายชื่อผู้ใช้]
+    AC --> AD[Active / Inactive]
 ```
 
 ---
 
-## Order Flow
-
-The order process follows this sequence:
+## 📦 Order Flow
 
 ```text
-Product
+เลือกสินค้า
    ↓
 Shopping Cart
    ↓
 Checkout
    ↓
-Customer Information
+ข้อมูลผู้รับ
    ↓
-Shipping Address
+ที่อยู่จัดส่ง
    ↓
-Longdo Address Search
+ค้นหาที่อยู่ด้วย Longdo
    ↓
 Payment
    ↓
 PromptPay QR
    ↓
-Customer Confirms Payment
+ยืนยันการชำระเงิน
    ↓
-Create Order
+สร้าง Order
    ↓
-Pending Verification
+รอตรวจสอบ
    ↓
-Paid
+ชำระแล้ว
    ↓
-Preparing
+กำลังเตรียมสินค้า
    ↓
-Shipped
+จัดส่งแล้ว
    ↓
-Completed
+สำเร็จ
 ```
 
-An administrator can also change an order to:
-
-```text
-Cancelled
-```
+Admin สามารถเปลี่ยนสถานะคำสั่งซื้อเป็น `ยกเลิก` ได้
 
 ---
 
-## Order Status
+## 📋 สถานะคำสั่งซื้อ
 
-| Status | Description |
+| Status | ความหมาย |
 | --- | --- |
-| Pending Verification | Waiting for the administrator to verify the payment |
-| Paid | Payment has been verified |
-| Preparing | The order is being prepared |
-| Shipped | The order has been shipped |
-| Completed | The order has been completed |
-| Cancelled | The order has been cancelled |
+| Pending Verification | รอตรวจสอบการชำระเงิน |
+| Paid | ชำระเงินแล้ว |
+| Preparing | กำลังเตรียมสินค้า |
+| Shipped | จัดส่งแล้ว |
+| Completed | คำสั่งซื้อสำเร็จ |
+| Cancelled | ยกเลิกคำสั่งซื้อ |
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
-### Home Page
+### หน้าแรก
 
-The home page displays products retrieved from the database and allows customers to add products to their shopping cart.
+แสดงรายการสินค้าจากระบบ และสามารถเพิ่มสินค้าลงตะกร้าได้
 
-![PoohShop Home Page](screenshots/home-page.png)
+![หน้าแรก PoohShop](./screenshots/home-page.png)
 
-### Shopping Cart
+### ตะกร้าสินค้า
 
-Customers can view selected products, change quantities, remove products, and view the total price before checkout.
+ผู้ใช้สามารถดูสินค้า เพิ่มหรือลดจำนวน ลบสินค้า และดูยอดรวมได้
 
-![PoohShop Shopping Cart](screenshots/cart-page.png)
+![ตะกร้าสินค้า](./screenshots/cart-page.png)
 
 ### Checkout
 
-Customer information is automatically loaded from the user profile. The shipping address can be searched using Longdo Map API.
+ระบบดึงข้อมูลจาก Profile และสามารถค้นหาที่อยู่ผ่าน Longdo Map API
 
-![PoohShop Checkout](screenshots/checkout-page.png)
+![Checkout](./screenshots/checkout-page.png)
 
 ### Admin Dashboard
 
-The admin dashboard provides an overview of orders, order statuses, sales, and recent orders.
+แสดงข้อมูลสรุป Orders ยอดขาย สถานะคำสั่งซื้อ และ Recent Orders
 
-![PoohShop Admin Dashboard](screenshots/admin-dashboard.png)
+![Admin Dashboard](./screenshots/admin-dashboard.png)
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 pooh-shop/
@@ -230,8 +236,6 @@ pooh-shop/
 │   └── style.css
 │
 ├── images/
-│   ├── promptpay-qr.png
-│   └── ...
 │
 ├── screenshots/
 │   ├── home-page.png
@@ -270,29 +274,27 @@ pooh-shop/
 ├── payment.html
 ├── profile.html
 ├── register.html
-├── .gitignore
-├── .prettierrc.json
 └── README.md
 ```
 
 ---
 
-## Main System Components
+## 🔐 Authentication
 
-### Authentication
+ใช้ Firebase Authentication สำหรับ
 
-Firebase Authentication is used for:
-
-- Registration
+- Register
 - Login
 - Logout
-- Password reset
+- Reset Password
 
-User profile information is stored separately in Cloud Firestore.
+ข้อมูล Profile ของผู้ใช้ถูกจัดเก็บใน Cloud Firestore
 
-### Database
+---
 
-Cloud Firestore stores application data such as:
+## 🗄️ Database
+
+Cloud Firestore ใช้จัดเก็บข้อมูลหลักของระบบ
 
 ```text
 users/
@@ -300,109 +302,76 @@ products/
 orders/
 ```
 
-### Product Images
+---
 
-Product images uploaded from the Admin Product Management page are stored using Cloudinary.
+## 🖼️ Product Images
 
-### Address Search
+รูปสินค้าที่เพิ่มผ่านระบบ Admin จะถูก Upload และจัดเก็บผ่าน Cloudinary
 
-Longdo Map API is used during checkout to provide address suggestions and automatically fill shipping address information.
+---
 
-### Payment
+## 📍 Address Search
 
-PoohShop uses a PromptPay QR image as the payment method.
+หน้า Checkout ใช้ Longdo Map API สำหรับค้นหาที่อยู่
+และช่วยกรอกข้อมูลเขต จังหวัด และรหัสไปรษณีย์
 
-After the customer confirms that payment has been made, the application creates an order in Cloud Firestore with the initial status:
+---
+
+## 💳 Payment
+
+ระบบใช้ PromptPay QR สำหรับการชำระเงิน
+
+เมื่อผู้ใช้กดยืนยันว่าชำระเงินแล้ว ระบบจะสร้าง Order ใน Cloud Firestore
+โดยสถานะเริ่มต้นคือ
 
 ```text
 pending_verification
 ```
 
-The administrator can then verify the order and update its status.
+จากนั้น Admin จะเป็นผู้ตรวจสอบและเปลี่ยนสถานะคำสั่งซื้อ
 
-> This project does not use an automatic payment gateway or automatic payment verification.
-
----
-
-## User Account Status
-
-Each user account can have one of the following states:
-
-```text
-active
-inactive
-```
-
-An administrator can deactivate a user account.
-
-Inactive users are prevented from accessing protected customer features.
-
-Administrator access is handled separately using configured administrator UIDs.
+> ระบบนี้ยังไม่ได้ใช้ Payment Gateway หรือระบบตรวจสอบการชำระเงินอัตโนมัติ
 
 ---
 
-## Security
+## 🔒 Security
 
-The project uses Firebase Authentication together with Firestore Security Rules to control access to application data.
+ระบบใช้ Firebase Authentication ร่วมกับ Firestore Security Rules
 
-Examples include:
+ตัวอย่างการควบคุมสิทธิ์:
 
-- Customers can access their own profile
-- Customers can view their own orders
-- Customers cannot update another user's profile
-- Only administrators can manage products
-- Only administrators can update order statuses
-- Only administrators can change user Active / Inactive status
-
-API services used by the frontend should also have domain restrictions configured for the deployed website.
+- ผู้ใช้สามารถเข้าถึง Profile ของตัวเอง
+- ผู้ใช้สามารถดู Orders ของตัวเอง
+- ผู้ใช้ไม่สามารถแก้ Profile ของคนอื่น
+- Admin เท่านั้นที่จัดการสินค้าได้
+- Admin เท่านั้นที่เปลี่ยนสถานะ Order ได้
+- Admin เท่านั้นที่เปิด / ปิดบัญชีผู้ใช้ได้
 
 ---
 
-## How to Run Locally
+## 💻 วิธีเปิดโปรเจกต์ในเครื่อง
 
-### 1. Clone the repository
+Clone Repository
 
 ```bash
 git clone https://github.com/Woodpekerrr/pooh-shop.git
 ```
 
-### 2. Open the project
+เข้าโฟลเดอร์
 
 ```bash
 cd pooh-shop
 ```
 
-### 3. Run using a local web server
-
-For example, use the **Live Server** extension in Visual Studio Code.
-
-Open:
-
-```text
-index.html
-```
-
-with Live Server.
-
-Because the project uses JavaScript ES6 modules, opening HTML files directly with:
-
-```text
-file://
-```
-
-is not recommended.
+จากนั้นเปิดโปรเจกต์ด้วย Visual Studio Code และใช้งานผ่าน Live Server
 
 ---
 
-## Deployment
+## 🚀 Deployment
 
-The project is deployed using GitHub Pages.
-
-### Production Website
+เว็บไซต์ถูก Deploy ผ่าน GitHub Pages
 
 https://woodpekerrr.github.io/pooh-shop/
-
-Deployment source:
 
 ```text
 Branch: main
@@ -411,66 +380,48 @@ Directory: / (root)
 
 ---
 
-## Git Workflow
+## 🔮 Future Improvements
 
-After making changes to the project:
+ฟีเจอร์ที่มีแผนพัฒนาต่อ:
 
-```bash
-git status
-git add .
-git commit -m "Update project"
-git push
-```
-
-GitHub Pages will deploy the latest version from the `main` branch.
-
----
-
-## Future Improvements
-
-Possible future improvements include:
-
-- Product categories
-- Product search
-- Product sorting
-- Stock management
-- Product size selection
-- Favorite / Wishlist system
-- Discount codes
-- Automatic payment gateway
-- Automatic payment verification
-- Email order notifications
-- Order cancellation by customers
-- Product reviews and ratings
-- Improved mobile navigation
-- Backend server / REST API
-- Admin analytics and charts
+- Stock Management
+- Size / Variant
+- Product Search / Filter
+- Payment Gateway
+- Email Notification
+- Coupon / Discount System
+- Dashboard Analytics
+- Wishlist
+- Product Reviews
+- Order Cancellation
+- Backend / REST API
 
 ---
 
-## Project Purpose
+## 🎯 จุดประสงค์ของโปรเจกต์
 
-PoohShop was developed as a portfolio project to practice building an e-commerce web application using frontend technologies and cloud services.
+PoohShop ถูกพัฒนาขึ้นเพื่อใช้เป็น Portfolio Project และฝึกการพัฒนา
+E-Commerce Web Application ตั้งแต่ Frontend ไปจนถึงการเชื่อมต่อ Cloud Services
 
-The project demonstrates experience with:
+สิ่งที่ได้ฝึกจากโปรเจกต์นี้:
 
-- Frontend development
+- Frontend Development
 - Firebase Authentication
 - Cloud Firestore
-- CRUD operations
-- API integration
-- User authentication and authorization
-- Shopping cart logic
-- Checkout workflow
-- Order management
-- Admin dashboard development
-- Responsive web design
-- Git and GitHub
-- Web deployment
+- CRUD Operations
+- API Integration
+- Authentication & Authorization
+- Shopping Cart
+- Checkout Flow
+- Order Management
+- Admin Dashboard
+- Responsive Web Design
+- Git & GitHub
+- GitHub Pages Deployment
 
 ---
 
-## Author
+## 👨‍💻 Author
 
 Developed by **Woodpekerrr**
 
@@ -479,6 +430,7 @@ https://github.com/Woodpekerrr
 
 ---
 
-## License
+## 📄 License
 
-This project was created for learning and portfolio purposes.
+โปรเจกต์นี้จัดทำขึ้นเพื่อการศึกษาและใช้เป็น Portfolio
+
