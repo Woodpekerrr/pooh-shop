@@ -9,7 +9,7 @@ The project provides both customer and administrator systems, including authenti
 https://woodpekerrr.github.io/pooh-shop/
 
 Admin account
-username : poohshop2026@gmail.com
+username : poohshop2026@gmail.com .
 password : admin001
 
 ---
