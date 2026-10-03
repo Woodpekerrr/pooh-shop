@@ -8,6 +8,11 @@ Shopping Cart, Checkout, Order Management และระบบ Admin
 
 https://woodpekerrr.github.io/pooh-shop/
 
+<<<<<<< HEAD
+Admin account
+username : poohshop2026@gmail.com .
+password : admin001
+
 ---
 =======
 ## 🔐 บัญชีสำหรับทดลองระบบ
@@ -28,7 +33,7 @@ https://woodpekerrr.github.io/pooh-shop/
 
 - สมัครสมาชิก
 - เข้าสู่ระบบ / ออกจากระบบ
-- ลืมรหัสผ่าน
+- ลืมรหัสผ่านและส่ง Reset Password ผ่าน Email
 - แก้ไขข้อมูลส่วนตัว
 - ดูรายการสินค้า
 - เพิ่มสินค้าลงตะกร้า
@@ -101,43 +106,65 @@ https://woodpekerrr.github.io/pooh-shop/
 flowchart TD
     A[ผู้ใช้งานเข้าสู่ PoohShop] --> B{เข้าสู่ระบบแล้วหรือไม่}
 
-    B -- ยัง --> C[Login / Register]
-    C --> D[Firebase Authentication]
-    D --> E{ประเภทบัญชี}
+    B -- ยัง --> C[Login]
+    B -- แล้ว --> H{ประเภทบัญชี}
 
-    B -- แล้ว --> E
+    C --> D{มีบัญชีแล้วหรือไม่}
 
-    E -- User --> F[หน้ารายการสินค้า]
-    E -- Admin --> N[Admin Dashboard]
+    D -- ไม่มี --> E[Register]
+    E --> F[Firebase Authentication]
+    F --> C
 
-    F --> G[เพิ่มสินค้าลงตะกร้า]
-    G --> H[Shopping Cart]
-    H --> I[Checkout]
+    D -- มี --> G{ลืมรหัสผ่านหรือไม่}
 
-    I --> J[โหลดข้อมูล Profile]
-    J --> K[ค้นหาที่อยู่]
-    K --> L[Longdo Map API]
-    L --> M[Payment]
+    G -- ใช่ --> RP[Forgot Password]
+    RP --> RE[ส่ง Reset Password Email]
+    RE --> RA[Firebase Authentication]
+    RA --> C
 
-    M --> P[PromptPay QR]
-    P --> Q[ผู้ใช้ยืนยันการชำระเงิน]
-    Q --> R[สร้าง Order ใน Firestore]
-    R --> S[Order Success]
-    S --> T[My Orders]
-    T --> U[ติดตามสถานะ Order]
+    G -- ไม่ --> LI[Login ด้วย Email และ Password]
+    LI --> FA[Firebase Authentication]
+    FA --> H
 
-    N --> V[จัดการ Orders]
-    N --> W[จัดการ Products]
-    N --> X[จัดการ Users]
+    H -- User --> I[หน้ารายการสินค้า]
+    H -- Admin --> AD[Admin Dashboard]
 
-    V --> Y[ดู / ค้นหา Orders]
-    Y --> Z[เปลี่ยนสถานะ Order]
+    I --> PF[ข้อมูลส่วนตัว]
+    PF --> I
 
-    W --> AA[เพิ่ม / แก้ไข / ลบสินค้า]
-    AA --> AB[Upload รูปผ่าน Cloudinary]
+    I --> J[เลือกสินค้า]
+    J --> K[เพิ่มสินค้าลงตะกร้า]
+    K --> L[Shopping Cart]
+    L --> M[Checkout]
 
-    X --> AC[ดูรายชื่อผู้ใช้]
-    AC --> AD[Active / Inactive]
+    M --> N[โหลดข้อมูลจาก Profile]
+    N --> O[ค้นหาที่อยู่]
+    O --> P[Longdo Map API]
+    P --> Q[Payment]
+
+    Q --> R[PromptPay QR]
+    R --> S[ผู้ใช้ยืนยันการชำระเงิน]
+    S --> T[สร้าง Order ใน Firestore]
+    T --> U[Order Success]
+    U --> V[My Orders]
+    V --> W[ติดตามสถานะคำสั่งซื้อ]
+
+    AD --> AO[Orders]
+    AD --> AP[Products]
+    AD --> AU[Users]
+
+    AO --> AO1[ค้นหา / กรอง Orders]
+    AO1 --> AO2[ดูรายละเอียด Order]
+    AO2 --> AO3[เปลี่ยนสถานะ Order]
+
+    AP --> AP1[เพิ่มสินค้า]
+    AP --> AP2[แก้ไขสินค้า]
+    AP --> AP3[ลบสินค้า]
+    AP1 --> CL[Upload รูปผ่าน Cloudinary]
+    AP2 --> CL
+
+    AU --> AU1[ดูรายชื่อผู้ใช้งาน]
+    AU1 --> AU2[Active / Inactive User]
 ```
 
 ---
@@ -203,21 +230,51 @@ Admin สามารถเปลี่ยนสถานะคำสั่ง�
 
 ### ตะกร้าสินค้า
 
-ผู้ใช้สามารถดูสินค้า เพิ่มหรือลดจำนวน ลบสินค้า และดูยอดรวมได้
+ผู้ใช้สามารถดูสินค้า เพิ่มหรือลดจำนวน ลบสินค้า และดูยอดรวมทั้งหมดได้
 
 ![ตะกร้าสินค้า](./screenshots/cart-page.png)
 
 ### Checkout
 
-ระบบดึงข้อมูลจาก Profile และสามารถค้นหาที่อยู่ผ่าน Longdo Map API
+ระบบดึงข้อมูลผู้ใช้จาก Profile และสามารถค้นหาที่อยู่ผ่าน Longdo Map API
 
 ![Checkout](./screenshots/checkout-page.png)
 
+### คำสั่งซื้อของฉัน
+
+ผู้ใช้สามารถดูประวัติคำสั่งซื้อ รายละเอียดสินค้า ยอดรวม และติดตามสถานะคำสั่งซื้อได้
+
+![คำสั่งซื้อของฉัน](./screenshots/my-orders.png)
+
+### ข้อมูลส่วนตัว
+
+ผู้ใช้สามารถดูและแก้ไขข้อมูลส่วนตัว เช่น ชื่อ นามสกุล และเบอร์โทรศัพท์
+
+![ข้อมูลส่วนตัว](./screenshots/profile.png)
+
 ### Admin Dashboard
 
-แสดงข้อมูลสรุป Orders ยอดขาย สถานะคำสั่งซื้อ และ Recent Orders
+แสดงภาพรวมของระบบ เช่น จำนวน Orders ยอดขายรวม สถานะคำสั่งซื้อ และ Recent Orders
 
 ![Admin Dashboard](./screenshots/admin-dashboard.png)
+
+### Admin Orders
+
+Admin สามารถค้นหา กรอง ดูรายละเอียด และเปลี่ยนสถานะคำสั่งซื้อได้
+
+![Admin Orders](./screenshots/admin-orders.png)
+
+### Admin Products
+
+Admin สามารถเพิ่ม แก้ไข และลบสินค้า รวมถึง Upload รูปสินค้าผ่าน Cloudinary
+
+![Admin Products](./screenshots/admin-products.png)
+
+### Admin Users
+
+Admin สามารถดูรายชื่อผู้ใช้งาน และเปิดหรือปิดการใช้งานบัญชีผู้ใช้ได้
+
+![Admin Users](./screenshots/admin-users.png)
 
 ---
 
@@ -231,12 +288,23 @@ pooh-shop/
 │   └── style.css
 │
 ├── images/
+│   ├── promptpay-qr.png
+│   ├── shoe1.jpg
+│   ├── shoe2.jpg
+│   ├── shoe3.jpg
+│   ├── shoe4.jpg
+│   └── ...
 │
 ├── screenshots/
 │   ├── home-page.png
 │   ├── cart-page.png
 │   ├── checkout-page.png
-│   └── admin-dashboard.png
+│   ├── my-orders.png
+│   ├── profile.png
+│   ├── admin-dashboard.png
+│   ├── admin-orders.png
+│   ├── admin-products.png
+│   └── admin-users.png
 │
 ├── js/
 │   ├── admin-dashboard.js
@@ -269,6 +337,8 @@ pooh-shop/
 ├── payment.html
 ├── profile.html
 ├── register.html
+├── .gitignore
+├── .prettierrc.json
 └── README.md
 ```
 
@@ -276,14 +346,33 @@ pooh-shop/
 
 ## 🔐 Authentication
 
-ใช้ Firebase Authentication สำหรับ
+ระบบใช้ Firebase Authentication สำหรับ
 
 - Register
 - Login
 - Logout
-- Reset Password
+- Forgot Password
+- Reset Password ผ่าน Email
 
 ข้อมูล Profile ของผู้ใช้ถูกจัดเก็บใน Cloud Firestore
+
+### Forgot Password Flow
+
+```text
+Login
+   ↓
+ลืมรหัสผ่าน?
+   ↓
+กรอก Email
+   ↓
+Firebase Authentication
+   ↓
+ส่ง Reset Password Email
+   ↓
+ผู้ใช้ตั้งรหัสผ่านใหม่
+   ↓
+กลับเข้าสู่ระบบ
+```
 
 ---
 
@@ -297,18 +386,40 @@ products/
 orders/
 ```
 
+### users
+
+เก็บข้อมูล Profile และสถานะบัญชีผู้ใช้งาน
+
+### products
+
+เก็บข้อมูลสินค้า เช่น ชื่อ ราคา และ URL รูปสินค้า
+
+### orders
+
+เก็บข้อมูลคำสั่งซื้อ รายการสินค้า ข้อมูลจัดส่ง ยอดรวม และสถานะคำสั่งซื้อ
+
 ---
 
 ## 🖼️ Product Images
 
 รูปสินค้าที่เพิ่มผ่านระบบ Admin จะถูก Upload และจัดเก็บผ่าน Cloudinary
 
+Cloudinary จะส่ง URL ของรูปกลับมาเพื่อจัดเก็บไว้กับข้อมูลสินค้าใน Cloud Firestore
+
 ---
 
 ## 📍 Address Search
 
 หน้า Checkout ใช้ Longdo Map API สำหรับค้นหาที่อยู่
-และช่วยกรอกข้อมูลเขต จังหวัด และรหัสไปรษณีย์
+
+เมื่อผู้ใช้เลือกสถานที่จาก Suggestion ระบบจะช่วยกรอกข้อมูล เช่น
+
+- แขวง / ตำบล
+- เขต / อำเภอ
+- จังหวัด
+- รหัสไปรษณีย์
+
+ผู้ใช้ยังสามารถแก้ไขข้อมูลที่อยู่ด้วยตัวเองก่อนดำเนินการชำระเงิน
 
 ---
 
@@ -329,18 +440,36 @@ pending_verification
 
 ---
 
+## 👤 User Account Status
+
+บัญชีผู้ใช้รองรับสถานะ
+
+```text
+active
+inactive
+```
+
+Admin สามารถเปลี่ยนสถานะบัญชีผู้ใช้งานได้
+
+หากบัญชีถูกเปลี่ยนเป็น `inactive` ผู้ใช้งานจะไม่สามารถเข้าสู่ระบบ
+หรือใช้งานหน้าที่ต้องผ่าน Authentication ได้ตามปกติ
+
+---
+
 ## 🔒 Security
 
 ระบบใช้ Firebase Authentication ร่วมกับ Firestore Security Rules
+เพื่อควบคุมการเข้าถึงข้อมูล
 
 ตัวอย่างการควบคุมสิทธิ์:
 
 - ผู้ใช้สามารถเข้าถึง Profile ของตัวเอง
 - ผู้ใช้สามารถดู Orders ของตัวเอง
-- ผู้ใช้ไม่สามารถแก้ Profile ของคนอื่น
-- Admin เท่านั้นที่จัดการสินค้าได้
-- Admin เท่านั้นที่เปลี่ยนสถานะ Order ได้
-- Admin เท่านั้นที่เปิด / ปิดบัญชีผู้ใช้ได้
+- ผู้ใช้ไม่สามารถแก้ไข Profile ของผู้ใช้อื่น
+- Admin เท่านั้นที่สามารถจัดการสินค้า
+- Admin เท่านั้นที่สามารถเปลี่ยนสถานะ Order
+- Admin เท่านั้นที่สามารถเปลี่ยนสถานะ Active / Inactive ของ User
+- สิทธิ์ Admin ตรวจสอบจาก UID ที่กำหนดไว้ในระบบ
 
 ---
 
@@ -359,6 +488,8 @@ cd pooh-shop
 ```
 
 จากนั้นเปิดโปรเจกต์ด้วย Visual Studio Code และใช้งานผ่าน Live Server
+
+> เนื่องจากโปรเจกต์ใช้ JavaScript ES6 Modules จึงแนะนำให้เปิดผ่าน Local Web Server แทนการเปิดด้วย `file://`
 
 ---
 
@@ -406,7 +537,7 @@ E-Commerce Web Application ตั้งแต่ Frontend ไปจนถึง�
 - CRUD Operations
 - API Integration
 - Authentication & Authorization
-- Shopping Cart
+- Shopping Cart Logic
 - Checkout Flow
 - Order Management
 - Admin Dashboard
@@ -428,4 +559,3 @@ https://github.com/Woodpekerrr
 ## 📄 License
 
 โปรเจกต์นี้จัดทำขึ้นเพื่อการศึกษาและใช้เป็น Portfolio
-
